@@ -1,0 +1,21 @@
+.btn {
+  outline: none;
+  padding: 24px;
+  border: 1px solid var(--dark-blue-300);
+  border-radius: 24px;
+  width: 70%;
+}
+
+.btn-dark {
+  background-color: var(--dark-blue-300);
+  color: white;
+}
+
+.btn-light {
+  background-color: var(--light-blue-100);
+  color: var(--dark-blue-300);
+}
+
+.btn + .btn {
+  margin-top: 20px;
+}

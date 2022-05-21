@@ -1,0 +1,96 @@
+:root {
+  --dark-blue-100: #609ed4;
+  --dark-blue-200: #356ea9;
+  --dark-blue-300: #0a3871;
+  --dark-blue-400: #072b61;
+  --dark-blue-500: #052051;
+
+  --light-blue-100: #f3f5fc;
+  --light-blue-200: #eff1fa;
+  --light-blue-300: #e9ecf8;
+  --light-blue-400: #aab2d5;
+  --light-blue-500: #757fb2;
+
+  --gray-100: #ced4da;
+  --gray-200: #adb5bd;
+  --gray-300: #868e96;
+  --gray-400: #495057;
+  --gray-500: #343a40;
+
+  font-size: 62.5%;
+}
+
+* {
+  outline: none;
+  font-size: 1.6rem;
+}
+
+body {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Inter', sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  padding: 10px 0;
+}
+
+section {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: var(--dark-blue-300);
+  color: white;
+  height: 10%;
+}
+
+footer a {
+  color: white;
+}
+
+div.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+section#menu {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+section#add-new-word {
+  /* display: flex; */
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+#add-new-word input {
+  height: 70%;
+}
+
+section#game {
+  display: none;
+}

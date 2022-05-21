@@ -34,13 +34,17 @@ body {
 }
 
 main {
-  height: 80%;
+  height: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   padding: 10px 0;
 }
 
@@ -57,11 +61,18 @@ footer {
   font-size: 1.5rem;
   background-color: var(--dark-blue-300);
   color: white;
-  height: 10%;
+  height: 5%;
 }
 
 footer a {
   color: white;
+}
+
+#menu.active,
+#add-new-word.active,
+#game.active,
+.btn-dark.back.active {
+  display: flex;
 }
 
 div.container {
@@ -75,13 +86,12 @@ div.container {
 }
 
 section#menu {
-  display: flex;
+  display: none;
   height: 100%;
   width: 100%;
 }
 
 section#add-new-word {
-  /* display: flex; */
   display: none;
   height: 100%;
   width: 100%;
@@ -93,4 +103,6 @@ section#add-new-word {
 
 section#game {
   display: none;
+  width: 100%;
+  height: 100%;
 }

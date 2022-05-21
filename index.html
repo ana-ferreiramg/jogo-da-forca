@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jogo da Forca</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap" rel="stylesheet" />
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <link rel="stylesheet" href="./src/styles/buttons.css" />
+
+    <!-- SCRIPTS -->
+    <script type="module" src="./src/scripts/app.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <header><img src="./src/img/alura.svg" alt="Alura Logo" id="alura-logo" /></header>
+    <main>
+      <section id="menu">
+        <div class="container">
+          <button id="start-game" class="btn btn-dark">Começar a jogar</button>
+          <button id="add-word" class="btn btn-light">Adicionar nova palavra</button>
+        </div>
+      </section>
+      <section id="add-new-word">
+        <div class="container">
+          <input type="text" placeholder="Digite uma palavra" required autofocus />
+
+          <span><img src="./src/img/exclamation-circle.svg" alt="Atenção" /> Máx. de 8 letras</span>
+
+          <div class="container">
+            <button class="btn btn-dark">Salvar e começar</button>
+            <button class="btn btn-light">Cancelar</button>
+          </div>
+        </div>
+      </section>
+      <section id="game">
+        <div id="display">
+          <div id="hangman"></div>
+          <input type="text" placeholder="Digite uma letra..." />
+        </div>
+        <div class="word">
+          <div id="dashes"></div>
+          <div id="letters"></div>
+        </div>
+        <div class="container">
+          <button class="btn btn-dark">Novo Jogo</button>
+          <button class="btn btn-light">Desistir</button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>© 2022 Copyright: <a href="https://www.linkedin.com/in/ana--ferreira/" target="_blank">Ana Ferreira</a></p>
+    </footer>
+  </body>
 </html>

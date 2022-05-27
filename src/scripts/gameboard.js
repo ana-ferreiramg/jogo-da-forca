@@ -37,11 +37,11 @@ function forca() {
   }
 }
 
-function hangman(attempts) {
+function hangman(mistakes) {
   if (canvas.getContext) {
     let ctx = canvas.getContext('2d');
 
-    switch (attempts) {
+    switch (mistakes) {
       case 1:
         let cabeca = new Path2D();
         ctx.strokeStyle = '#0a3871';
@@ -73,18 +73,48 @@ function hangman(attempts) {
         break;
       case 2:
         // corpo
+        let corpo = new Path2D();
+        ctx.strokeStyle = '#0a3871';
+        ctx.lineWidth = 5;
+        corpo.moveTo(203, 90);
+        corpo.lineTo(200, 180);
+        ctx.stroke(corpo);
         break;
       case 3:
         // braço esquerdo
+        let bracoEsquerdo = new Path2D();
+        ctx.strokeStyle = '#0a3871';
+        ctx.lineWidth = 5;
+        bracoEsquerdo.moveTo(180, 120);
+        bracoEsquerdo.lineTo(203, 90);
+        ctx.stroke(bracoEsquerdo);
         break;
       case 4:
         // braço direito
+        let bracoDireito = new Path2D();
+        ctx.strokeStyle = '#0a3871';
+        ctx.lineWidth = 5;
+        bracoDireito.moveTo(225, 120);
+        bracoDireito.lineTo(203, 90);
+        ctx.stroke(bracoDireito);
         break;
       case 5:
         // perna esquerda
+        let pernaEsquerda = new Path2D();
+        ctx.strokeStyle = '#0a3871';
+        ctx.lineWidth = 5;
+        pernaEsquerda.moveTo(185, 200);
+        pernaEsquerda.lineTo(200, 178);
+        ctx.stroke(pernaEsquerda);
         break;
       case 6:
         // perna direita
+        let pernaDireita = new Path2D();
+        ctx.strokeStyle = '#0a3871';
+        ctx.lineWidth = 5;
+        pernaDireita.moveTo(215, 200);
+        pernaDireita.lineTo(200, 178);
+        ctx.stroke(pernaDireita);
         break;
       default:
         alert('Você perdeu!');

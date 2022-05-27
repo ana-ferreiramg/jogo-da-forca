@@ -3,11 +3,11 @@
 // A página deve ter os traços indicando cada letra da palavra, separados por espaço
 // desenhar boneco
 // desenhar forca
-let canvas = document.querySelector('#hangman-canvas');
+let canvasHangman = document.querySelector('#hangman-canvas');
 
 function forca() {
-  if (canvas.getContext) {
-    let ctx = canvas.getContext('2d');
+  if (canvasHangman.getContext) {
+    let ctx = canvasHangman.getContext('2d');
 
     // linha vertical esquerda
     let verticalEsquerda = new Path2D();
@@ -38,8 +38,8 @@ function forca() {
 }
 
 function hangman(mistakes) {
-  if (canvas.getContext) {
-    let ctx = canvas.getContext('2d');
+  if (canvasHangman.getContext) {
+    let ctx = canvasHangman.getContext('2d');
 
     switch (mistakes) {
       case 1:
@@ -124,4 +124,30 @@ function hangman(mistakes) {
   }
 }
 
-export { forca, hangman };
+function dashes(secretWord) {
+  let dashesCanvas = document.querySelector('#dashes-canvas');
+  let amountLetters = secretWord.length;
+
+  if (dashesCanvas.getContext) {
+    let ctx = dashesCanvas.getContext('2d');
+    let inicio = 20;
+
+    for (let i = 0; i < amountLetters; i++) {
+      let fim = inicio + 30;
+
+      let dash = new Path2D();
+      ctx.strokeStyle = '#0a3871';
+      ctx.lineWidth = 3;
+      ctx.textAlign = 'center';
+      dash.moveTo(inicio, 50);
+      dash.lineTo(fim, 50);
+      ctx.stroke(dash);
+
+      inicio += 40;
+    }
+  } else {
+    alert(`Seu navegador não suporta o canvas! :(`);
+  }
+}
+
+export { forca, hangman, dashes };

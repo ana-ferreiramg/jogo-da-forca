@@ -1,9 +1,5 @@
-// tabuleiro do jogo
-// tracinhos para a palavra secreta (dashes)
-// A página deve ter os traços indicando cada letra da palavra, separados por espaço
-// desenhar boneco
-// desenhar forca
 let canvasHangman = document.querySelector('#hangman-canvas');
+let dashesCanvas = document.querySelector('#dashes-canvas');
 
 function forca() {
   if (canvasHangman.getContext) {
@@ -125,7 +121,6 @@ function hangman(mistakes) {
 }
 
 function dashes(secretWord) {
-  let dashesCanvas = document.querySelector('#dashes-canvas');
   let amountLetters = secretWord.length;
 
   if (dashesCanvas.getContext) {
@@ -142,6 +137,7 @@ function dashes(secretWord) {
       dash.moveTo(inicio, 50);
       dash.lineTo(fim, 50);
       ctx.stroke(dash);
+      ctx.closePath();
 
       inicio += 40;
     }
@@ -150,4 +146,12 @@ function dashes(secretWord) {
   }
 }
 
-export { forca, hangman, dashes };
+function clearCanvas() {
+  let ctxDashes = dashesCanvas.getContext('2d');
+  let ctxHangman = canvasHangman.getContext('2d');
+
+  ctxDashes.clearRect(0, 0, dashesCanvas.width, dashesCanvas.height);
+  ctxHangman.clearRect(0, 0, canvasHangman.width, canvasHangman.height);
+}
+
+export { forca, hangman, dashes, clearCanvas };

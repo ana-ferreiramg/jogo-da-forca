@@ -1,15 +1,30 @@
-// criar palavra secreta
-// inserir novas palavras na lista de palavras secretas
+import { alreadyExists } from './verify-data.js';
 
-let secretWords = ['banana', 'introdução', 'alura', 'cursos'];
+function init() {
+  let secretWords = JSON.parse(localStorage.getItem('jogo-da-forca')) || ['HACKER', 'PYTHON', 'ALURA', 'CURSOS'];
+  localStorage.setItem('jogo-da-forca', JSON.stringify(secretWords));
+
+  return secretWords;
+}
 
 function createSecretWord() {
-  let index = Math.floor(Math.random() * secretWords.length);
-  return secretWords[index];
+  let listWords = init();
+  let index = Math.floor(Math.random() * listWords.length);
+
+  return listWords[index];
 }
 
 function addNewWord(word) {
-  return secretWords.push(word);
+  let listWords = JSON.parse(localStorage.getItem('jogo-da-forca'));
+  const exist = alreadyExists(word, listWords);
+
+  if (exist === -1) {
+    listWords.push(word);
+  } else {
+    console.log('Essa palavra já existe na lista!');
+  }
+
+  localStorage.setItem('jogo-da-forca', JSON.stringify(listWords));
 }
 
-export { createSecretWord, addNewWord };
+export { createSecretWord, addNewWord, init };

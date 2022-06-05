@@ -1,18 +1,30 @@
-// Desenhar Mensagem "Você Perdeu"
-// Desenhar Mensagem "Você Venceu"
-// Ao completar o desenho da forca, deve ser exibida uma mensagem na tela de "Fim de Jogo"
-// Se completar a palavra correta antes de acabarem as tentativas, deve ser exibida na tela a mensagem "Você Venceu. Parabéns!"
+function messageText(section, text, status) {
+  let card = document.querySelector('.game-display .message-card');
+  let card2 = document.querySelector('.new-word span.message-card');
+  let inputCard = document.querySelector('.game-display #enterLetter');
+  let textCard2 = document.querySelector('.new-word span.message-card');
 
-function messageText(text, status) {
-  let messageCard = document.querySelector('.display #message-card');
-  let getLetter = document.querySelector('.display #enterLetter');
+  if (section === 'game') {
+    card.classList.add('active');
+    card.innerHTML = `${text}`;
+  }
 
-  messageCard.classList.add('active');
-  messageCard.innerHTML = `${text}`;
+  if (section === 'addWord') {
+    card2.classList.add('active');
+    card2.innerHTML = `${text}`;
+    textCard2.style.color = 'red';
+  }
 
   if (status === 'Aviso') {
-    getLetter.style.borderColor = 'red';
+    inputCard.style.borderColor = 'red';
   }
+
+  setTimeout(function () {
+    card.classList.remove('active');
+    card2.classList.remove('active');
+  }, 3000);
+
+  clearTimeout(messageText);
 }
 
 export { messageText };

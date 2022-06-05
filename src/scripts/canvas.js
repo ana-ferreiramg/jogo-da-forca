@@ -1,5 +1,4 @@
 let canvasHangman = document.querySelector('#hangman-canvas');
-let dashesCanvas = document.querySelector('#dashes-canvas');
 
 function forca() {
   if (canvasHangman.getContext) {
@@ -113,33 +112,7 @@ function hangman(mistakes) {
         ctx.stroke(pernaDireita);
         break;
       default:
-        alert('Você perdeu!');
-    }
-  } else {
-    alert(`Seu navegador não suporta o canvas! :(`);
-  }
-}
-
-function dashes(secretWord) {
-  let amountLetters = secretWord.length;
-
-  if (dashesCanvas.getContext) {
-    let ctx = dashesCanvas.getContext('2d');
-    let inicio = 20;
-
-    for (let i = 0; i < amountLetters; i++) {
-      let fim = inicio + 30;
-
-      let dash = new Path2D();
-      ctx.strokeStyle = '#0a3871';
-      ctx.lineWidth = 3;
-      ctx.textAlign = 'center';
-      dash.moveTo(inicio, 50);
-      dash.lineTo(fim, 50);
-      ctx.stroke(dash);
-      ctx.closePath();
-
-      inicio += 40;
+        return 'Você perdeu!';
     }
   } else {
     alert(`Seu navegador não suporta o canvas! :(`);
@@ -147,11 +120,9 @@ function dashes(secretWord) {
 }
 
 function clearCanvas() {
-  let ctxDashes = dashesCanvas.getContext('2d');
   let ctxHangman = canvasHangman.getContext('2d');
 
-  ctxDashes.clearRect(0, 0, dashesCanvas.width, dashesCanvas.height);
   ctxHangman.clearRect(0, 0, canvasHangman.width, canvasHangman.height);
 }
 
-export { forca, hangman, dashes, clearCanvas };
+export { forca, hangman, clearCanvas };

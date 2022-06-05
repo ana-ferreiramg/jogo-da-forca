@@ -21,23 +21,63 @@
 }
 
 * {
+  box-sizing: border-box;
   outline: none;
   font-size: 1.6rem;
 }
 
 body {
   box-sizing: border-box;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 100vw;
   height: 100vh;
+  max-height: 800px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+input {
+  width: 100%;
+  height: 70%;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--dark-blue-300);
+  border: 2px solid var(--dark-blue-300);
+  padding: 0 10px;
+  caret-color: var(--dark-blue-500);
+}
+
+::placeholder {
+  color: var(--dark-blue-300);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: var(--dark-blue-300);
+}
+
+::-ms-input-placeholder {
+  color: var(--dark-blue-300);
+}
+
+main,
+header {
+  max-width: 1200px;
+  max-height: 800px;
 }
 
 main {
-  height: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 85%;
 }
 
 header {
@@ -45,6 +85,7 @@ header {
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  width: 100%;
   padding: 10px 0;
 }
 
@@ -52,6 +93,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 800px;
 }
 
 footer {
@@ -61,21 +103,27 @@ footer {
   font-size: 1.5rem;
   background-color: var(--dark-blue-300);
   color: white;
-  height: 5%;
+  padding: 10px;
+  width: 100%;
+  max-height: 30px;
+  box-sizing: border-box;
 }
 
 footer a {
   color: white;
 }
 
-#menu.active,
-#add-new-word.active,
-#game.active,
-.btn-dark.back.active {
+.menu.active,
+.new-word.active,
+.game.active,
+.btn-dark.back.active,
+div.card.active {
   display: flex;
 }
 
-div.container {
+.container,
+.container2,
+.containerCard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,24 +133,157 @@ div.container {
   height: 100%;
 }
 
-section#menu {
+/* ####### SECTION MENU ####### */
+section.menu {
   display: none;
   height: 100%;
   width: 100%;
 }
 
-section#add-new-word {
+/* ####### SECTION NEW-WORD ####### */
+section.new-word {
   display: none;
   height: 100%;
   width: 100%;
 }
 
-#add-new-word input {
-  height: 70%;
+.new-word input#newWord {
+  flex: 1;
+  max-height: 70%;
+  border: 2px solid transparent;
 }
 
-section#game {
+section.new-word span {
+  display: block;
+  width: 100%;
+  min-height: 10%;
+  padding-left: 10px;
+}
+
+/* ####### SECTION GAME ####### */
+section.game {
   display: none;
   width: 100%;
   height: 100%;
+}
+
+.game-display {
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+  width: 100%;
+}
+
+.game-display input {
+  flex: 1;
+  height: 20%;
+}
+
+.hangman {
+  flex: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+
+.game-word {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.dashes,
+.letters {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashes {
+  font-weight: bold;
+  font-size: 4rem;
+  color: var(--dark-blue-300);
+  padding: 0 10px;
+}
+
+.dashes span {
+  flex: 1;
+  max-width: 60px;
+  text-align: center;
+  color: transparent;
+  border-bottom: 5px solid var(--dark-blue-300);
+}
+
+.dashes span.active {
+  color: var(--dark-blue-300);
+}
+
+.dashes span + span {
+  margin-left: 10px;
+}
+
+.letters {
+  font-size: 2rem;
+  color: var(--dark-blue-300);
+  margin-top: 20px;
+}
+
+span.message-card {
+  opacity: 0;
+  margin: 10px auto 0;
+  font-weight: bold;
+  color: red;
+}
+
+span.message-card.active {
+  opacity: 1;
+}
+
+div.card {
+  position: absolute;
+  top: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+div.card > div.containerCard {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  height: 25%;
+  max-width: 400px;
+  max-height: 200px;
+  border-radius: 8px;
+  background-color: var(--light-blue-100);
+}
+
+div.containerCard h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  padding: 10px;
+}
+
+div.containerCard p {
+  font-size: 1.8rem;
+}
+
+@media only screen and (min-width: 800px) {
+  section .container {
+    flex-direction: row;
+  }
+
+  section .container .btn + .btn {
+    margin: 0 0 0 20px;
+  }
 }

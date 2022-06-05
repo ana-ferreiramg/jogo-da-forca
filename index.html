@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
     <title>Jogo da Forca</title>
 
     <!-- GOOGLE FONTS -->
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="./src/styles/reset.css" />
     <link rel="stylesheet" href="./src/styles/global.css" />
     <link rel="stylesheet" href="./src/styles/buttons.css" />
-    <link rel="stylesheet" href="./src/styles/gameboard.css" />
 
     <!-- SCRIPTS -->
     <script type="module" src="./src/scripts/app.js" defer></script>
@@ -26,38 +25,46 @@
       <button class="btn btn-dark back">Menu</button>
     </header>
     <main>
-      <section id="menu" class="active">
+      <section class="menu active">
         <div class="container">
-          <button id="start-game" class="btn btn-dark">Começar a jogar</button>
-          <button id="add-word" class="btn btn-light">Adicionar nova palavra</button>
+          <button class="btn btn-dark start-game">Começar a jogar</button>
+          <button class="btn btn-light add-word">Adicionar nova palavra</button>
         </div>
       </section>
-      <section id="add-new-word">
-        <div class="container">
-          <input type="text" placeholder="Digite uma palavra" required autofocus />
+      <section class="new-word">
+        <div class="container2">
+          <input id="newWord" type="text" maxlength="8" placeholder="Digite uma palavra" required autofocus autocomplete="off" />
 
           <span><img src="./src/img/exclamation-circle.svg" alt="Atenção" /> Máx. de 8 letras</span>
-
-          <div class="container">
-            <button class="btn btn-dark">Salvar e começar</button>
-            <button class="btn btn-light">Cancelar</button>
-          </div>
-        </div>
-      </section>
-      <section id="game">
-        <div class="display">
-          <div id="hangman">
-            <canvas id="hangman-canvas" width="300" height="250"></canvas>
-          </div>
-          <input type="text" placeholder="Digite uma letra..." />
-        </div>
-        <div class="word">
-          <div id="dashes">_ _ _ _ _</div>
-          <div id="letters">A, B, C, F, G</div>
+          <span class="message-card"></span>
         </div>
         <div class="container">
-          <button id="new-game" class="btn btn-dark">Novo Jogo</button>
-          <button id="show-answer" class="btn btn-light">Desistir</button>
+          <button class="btn btn-dark btn-add-word">Salvar e começar</button>
+          <button class="btn btn-light back cancel">Cancelar</button>
+        </div>
+      </section>
+      <section class="game">
+        <div class="game-display">
+          <div class="hangman">
+            <canvas id="hangman-canvas" width="300" height="250"></canvas>
+          </div>
+          <input id="enterLetter" type="text" maxlength="1" placeholder="Digite uma letra..." autocomplete="off" />
+          <span class="message-card"></span>
+        </div>
+        <div class="game-word">
+          <div class="dashes"></div>
+          <div class="letters"></div>
+        </div>
+        <div class="container">
+          <button class="btn btn-dark new-game">Novo Jogo</button>
+          <button class="btn btn-light give-up">Desistir</button>
+        </div>
+        <div class="card">
+          <div class="containerCard">
+            <h2>VOCÊ PERDEU!</h2>
+            <p>A palavra era: ALURA!</p>
+            <button class="btn btn-dark game-over active">OK</button>
+          </div>
         </div>
       </section>
     </main>
